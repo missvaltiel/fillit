@@ -6,43 +6,29 @@
 #    By: karvin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/21 10:00:36 by karvin            #+#    #+#              #
-#    Updated: 2016/11/09 23:42:07 by karvin           ###   ########.fr        #
+#    Updated: 2017/02/13 13:59:59 by karvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= fillit
-VERS	:= 1.0.0
-ATHR	:= karvin
 
-INCD	:= ./include
-LIBD	:= ./lib
-OBJD	:= ./build
-OUTD	:= .
-SRCD	:= ./src
+LIB		:= ./lib/libft.a
+SRC		:= ./src/main.c
+INC		:= ./inc
+OBJ		:= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
-CMPR	:= gcc
-FLGS	:= -Wall -Werror -Wextra -I $(INCD)
+CC		:= gcc
+FLAGS	:= -Wall -Werror -Wextra
 
-COMP	:= $(CMPR) $(FLGS)
+all: $(NAME)
 
-INPT	:=
-OTPT	:= fillit
-
-SORC	:= $(addsuffix .c,$(addprefix $(SRCD)/,$(INPT)))
-OBJC	:= $(addsuffix .o,$(addprefix $(OBJD)/,$(INPT)))
-OUT		:= $(addprefix $(OUTD)/,$(OTPT))
-
-all: $(OUT)
+$(NAME)	:
+		$(CC) -o $(NAME) $(FLAGS) $(SRC) -I $(LIB) -L (LIB) -lft
 
 clean:
-	@echo No object files! Cannot complete clean.
+	rm -rf $(OBJDIR)
 
-fclean: clean
-	rm -f $(OUT)
+fclean:	clean
+		rm -f $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re
-
-$(NAME): $(SORC)
-	$(COMP) $(SORC) -o $(NAME)
+re:	fclean all
