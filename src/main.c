@@ -6,25 +6,11 @@
 /*   By: karvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 22:15:48 by karvin            #+#    #+#             */
-/*   Updated: 2017/02/13 14:18:10 by karvin           ###   ########.fr       */
+/*   Updated: 2017/02/17 13:20:55 by karvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "../inc/fillit.h"
-#include <fcntl.h>
-
-void		ft_putstr(const char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str)
-	{
-		write(1, *str++, 1);
-	}
-}
+#include "lib.h"
 
 int			read_it(char *file)
 {
